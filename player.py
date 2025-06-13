@@ -3,7 +3,13 @@ from constants import *
 
 
 class Player(CircleShape):
+    containers = None
+
     def __init__(self, x, y):
+        if Player.containers:
+            pygame.sprite.Sprite.__init__(self, *Player.containers)
+        else:
+            pygame.sprite.Sprite.__init__(self)
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
 
